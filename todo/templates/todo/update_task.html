@@ -1,0 +1,15 @@
+
+{% extends "todo/basic.html" %}
+{% block body %}
+<div class="center-column">
+<center><h3>Update Task</h3></center>
+
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form.title}}
+    <center><h5>Completed</h5>{{form.complete}}</center>
+    <center><button class="btn btn-success" type="submit" >Update</button></center>
+</form>
+</div>
+{% endblock %}
+

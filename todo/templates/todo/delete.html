@@ -1,0 +1,12 @@
+{% extends "todo/basic.html" %}
+{% block body %}
+<div class="center-column">
+<center><p><h2>Are you sure you want to delete "{{item}}" ?</h2></p></center>
+</div>
+<center><a href="{% url 'index' %}"> <button type="button" class="btn btn-success">Cancel</button></a></center>
+<br>
+<form method="POST" action="">
+    {% csrf_token %}
+    <center><button class="btn btn btn-danger" type="submit" >Confirm</button></center>
+</form>
+{% endblock %}

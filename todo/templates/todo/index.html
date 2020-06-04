@@ -1,0 +1,28 @@
+{% extends "todo/basic.html" %}
+{% block body %}
+<div class="center-column">
+    <center><h1>TODO</h1></center>
+	<form method="POST" action="/">
+		{% csrf_token %}
+		{{form.title}}
+        <center><button class="btn btn-info" type="submit" >Add Task</button></center>
+	</form>
+
+	<div class="todo-list">
+
+	{% for task in tasks %}
+		<div class="item-row">
+			{% if task.complete == True %}
+			<strike>{{task}}</strike>
+			{% else %}
+			<span>{{task}}</span>
+			{% endif %}
+            <a class="btn btn-sm btn-update" href="{% url 'update_task' task.id %}" style="float: right;">Update</a>
+			<a class="btn btn-sm btn-danger" href="{% url 'delete' task.id %}" style="float: right;">Delete</a>
+		</div>
+	{% endfor %}
+	</div>
+</div>
+
+{% endblock %}
+
